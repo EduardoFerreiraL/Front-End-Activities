@@ -2,58 +2,345 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 0;
     margin: 0;
+    border: 0;
+
 }
 
 body{
+    background: linear-gradient(135deg, rgba(25, 25, 40, 0.95) 0%, rgba(35, 35, 55, 0.98) 100%); /*fundo gradiente */
     text-align: center;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
-header ol{
-    display: flex;
-    justify-content: center;
-    padding: 10px;
-    list-style-type: none;
+@keyframes fadeInUp { /* Adicionei uma animação de fade-in  a partir do topo ou eixo Y */	
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-header ol li{
-    padding: 10px;
+@keyframes fadeInRight { /* Adicionei uma animação de fade-in a partir da direita ou eixo X */
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-header ol li a{
-    text-decoration: none;
+@keyframes textGlow { /* Efeito de glow nos textos */
+    0% { text-shadow: 0 0 15px rgba(255, 107, 107, 0.4); }
+    100% { text-shadow: 0 0 25px rgba(255, 107, 107, 0.7); }
+}
+
+header {
+    background: linear-gradient(135deg, rgba(20, 20, 30, 0.9) 0%, rgba(40, 40, 60, 0.95) 100%); /*fundo gradiente diferente do principal*/
+    width: 96%;
+    padding: 1rem 2rem; /* Adicionei um espaçamento interno */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3); /* Adicionei uma sombra */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* uma borda inferior */
+    display: flex; 
+    justify-content: space-between; /* espaçamento entre os elementos */
+    align-items: center;
+}
+
+header h1 {
+    color: #ff6b6b;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700; /* Alterado para 700 para tornar o texto mais destacado */
+    font-size: 2rem;
+    text-transform: uppercase; /* transforma o texto em maiúsculas */
+    letter-spacing: 2px; /* Adicionei um espaçamento entre as letras */
+    margin: 0;
+    text-shadow: 0 0 10px rgba(255, 107, 107, 0.5); /* Adicionei uma sombra suave de fundo */
+    transition: all 0.3s ease; /* Adicionei uma transição de hover básica */
+}
+
+header h1:hover { /* hover de quand o mouse passar por cima */
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.8);
+    transform: scale(1.02);
+}
+
+header ol {
+    display: flex; 
+    gap: 2rem; /* espaçamento entre os elementos */
+    list-style: none; /* remove os pontos da lista */
+    margin: 0;
+    padding: 0;
+}
+
+header ol li a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none; /* remove o sublinhado do link */
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: all 0.3s ease; /* Adicionei uma transição de hover básica */
+    position: relative;
+}
+
+
+header ol li a::after { /* cria uma linha abaixo do link */
+    content: '';
+    position: absolute;
+    bottom: -5px; /* posiciona a linha abaixo do link */
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff6b6b;
+    transition: all 0.3s ease; /*transição de hover básica */
+    transform: translateX(-50%); /* centraliza a linha */
+}
+
+header ol li a:hover::after { /* quando passar o mouse por cima a linha aparece */
+    width: 80%;
 }
 
 
 #hero{
+    margin-top: 20px;
     position: relative;
-    width: 100%;
-    display: inline-block;
-    align-items: center;
 }
 
 .ImageHero {
     display: block;
-    width: 70%;
+    width: 85%;
+    height: 800px;
     object-fit: cover;
+    margin: auto;
 }
 
-#hero .TitleHero{
+#hero .TitleHero {
+    font-size: 4rem; /* 64px - usei rem para melhor visualização */
+    margin-top: 100px;
     position: absolute;
     top: 20px;
-    left: 20px;
-    color: rgb(0, 0, 0);
+    left: 200px;
+    color: #ffffff;
     background-color: transparent;
-    padding: 10px;
+    padding: 15px 25px;
+    font-family: 'Montserrat', sans-serif; /* Usei a fonte Montserrat pra ficar ma bonito */
+    font-weight: 800;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 1px; /* Aumentei o espaçamento entre as letras */
+    transform: translateY(20px); /* Ajustei a posição vertical */
+    opacity: 0; /* Inicialmente, o texto está transparente */
+    animation: fadeInUp 1s ease-out 0.3s forwards; /* Adicionei uma animação de fade-in */
+    border-left: 4px solid #ff6b6b; /* Adicionei uma pequena a borda esquerda */
+    border-radius: 0 8px 8px 0;
 }
 
-#hero .TextHero{
+#hero .TextHero {
+    text-align: left;
     position: absolute;
-    top: 70px;
-    left: 20px;
-    color: rgb(0, 0, 0);
-    background-color: transparent;
-    padding: 10px;
+    font-size: 1.5rem;  /* 64px - usei rem para melhor visualização */
+    top: 280px; 
+    left: 200px; 
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 30px;
+    font-family: 'Open Sans', sans-serif; /* Usei a fonte Open Sans pra ficar mais bonito */
+    line-height: 1.6; /* Aumentei a altura da linha */
+    max-width: 600px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px); /* Adicionei um efeito de desfoque */
+    transform: translateX(-20px); /* Adicionei uma transição suave do elemento quando ele aparece */
+    opacity: 0;
+    animation: fadeInRight 1s ease-out 0.6s forwards; /* Chama a animação fadeInRight */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Adicionei uma sombra suave de fundo*/
+}
+
+
+#hero .TitleHero:hover { /* Adicionei uma animação de hover para o título, ou seja terá um efeito de quando passar o mouse por cima */
+    text-shadow: 0 0 10px rgba(250, 0, 0, 0.7);
+    transition: text-shadow 0.3s ease;
+}
+
+#hero .TextHero:hover { /* Adicionei uma animação de hover para o texto, ou seja terá um efeito de quando passar o mouse por cima */
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: scale(1.02) translateX(0);
+    transition: all 0.3s ease;
+}
+
+
+#about {
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden; /* Adicionei um efeito de overflow para o fundo */
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+.TitleAbout {
+    font-size: 2.8rem;
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    z-index: 1; /* Adicionei uma posição relativa para o título */
+    text-shadow: 0 0 15px rgba(255, 107, 107, 0.4);
+    animation: textGlow 3s ease-in-out infinite alternate; /* Adicionei uma animação de glow */
+}
+
+.TextAbout {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    text-align: center;
+    position: relative;
+    z-index: 1; /* Adicionei uma posição relativa para o texto */
+    background: rgba(20, 20, 30, 0.6);
+    border-radius: 12px;
+    backdrop-filter: blur(8px); /* Adicionei um efeito de desfoque */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2); /* Adicionei uma sombra suave de fundo*/
+    transform: translateY(20px); /* Adicionei uma transição suave do elemento quando ele aparece */
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.3s forwards; /* Adicionei uma animação de fade-in */
+}
+
+.TextAbout::after { /* Adicionei uma linha vermelha abaixo do texto */
+    content: '';
+    position: absolute;
+    bottom: -5px; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff6b6b, transparent); /* Adicionei um gradiente vermelho com transparência */
+}
+
+.TextAbout:hover { /* Adicionei uma animação quando passar o mouse por cima */
+    background: rgba(25, 25, 40, 0.7);
+    transform: translateY(-5px) scale(1.02);
+    transition: all 0.3s ease;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+#catalog {
+    background: rgba(22, 22, 32, 0.95);
+    padding: 60px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+#catalog h2 {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    text-align: center;
+    margin-bottom: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    position: relative;
+}
+
+#catalog h2::after { /* Adicionei uma linha vermelha abaixo do título */
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%); /* Centralize a linha */
+    width: 80px;
+    height: 3px;
+    background: #ff6b6b;
+    border-radius: 3px;
+}
+
+.game-grid {
+    display: grid; /* Usei grid para organizar os jogos */
+    gap: 25px;
+}
+
+.game {
+    background: transparent;
+    border-radius: 8px;
+    overflow: hidden; /* Adicionei um efeito de overflow para o fundo */
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Adicionei uma transição suave */
+    position: relative;
+}
+
+.game-content {
+    display: flex; /* Usei flex para organizar os elementos */
+    flex-direction: column; /* Usei flex-direction para organizar os elementos */
+    height: 100%;
+}
+
+.game-img-container {
+    height: 120px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.game img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 20px;
+}
+
+.game h3 {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    padding: 18px 5px 5px;
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    text-align: center;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.game:hover {
+    transform: translateY(-5px);
+}
+
+.game:hover img {
+    transform: scale(1.02);
+}
+
+.game:hover h3 {  /* Adicionei uma animação de hover para o título do jogo */
+    color: #ff6b6b;
+}
+
+footer {
+    background: rgba(15, 15, 25, 0.95);
+    padding: 25px 20px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 0.9rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 60px;
+}
+
+footer a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ff6b6b;
+    text-decoration: underline;
 }
 
